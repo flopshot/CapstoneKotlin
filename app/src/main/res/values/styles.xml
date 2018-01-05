@@ -1,0 +1,29 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.HomeButtons" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:textSize">25sp</item>
+        <item name="android:fontFamily">times new roman</item>
+        <item name="android:textStyle">bold|italic</item>
+    </style>
+
+    <style name="HoleViewHeader">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/lt_gray</item>
+        <item name="android:textStyle">bold|italic</item>
+    </style>
+
+    <style name="WidgetBar">
+        <item name="android:textSize">21sp</item>
+        <item name="android:textColor">@color/lt_gray</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+</resources>

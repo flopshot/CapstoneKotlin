@@ -1,0 +1,19 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/badge_text"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_gravity="center_vertical|end"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/notification_badge"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:padding="9dp"
+        tools:text="9+"
+        android:textColor="@android:color/white"
+        android:textSize="12sp" />
+</FrameLayout>

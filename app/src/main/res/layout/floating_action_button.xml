@@ -1,0 +1,13 @@
+<android.support.design.widget.FloatingActionButton
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/floating_action_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:layout_margin="16dp"
+    app:layout_anchor="@id/fragment_container"
+    app:layout_anchorGravity="bottom|right|end"
+    tools:src="@drawable/ic_add_player" />
