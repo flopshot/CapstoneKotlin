@@ -1,7 +1,9 @@
 package com.seannajera.golfiq
 
 import android.app.Application
+import android.arch.persistence.room.Room
 import android.util.Log
+import com.seannajera.golfiq.model.persistenceDb.AppDatabase
 import timber.log.Timber
 
 class GolfIqApplication : Application() {
@@ -27,6 +29,9 @@ class GolfIqApplication : Application() {
                 }
             })
         }
+
+        Room.databaseBuilder(this, AppDatabase::class.java, "golfiq-database")
+                .allowMainThreadQueries().build()
     }
 
     companion object {
