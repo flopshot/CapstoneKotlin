@@ -15,7 +15,7 @@ class GolfIqApplication : Application() {
         if (BuildConfig.DEBUG) {
             Timber.plant(object : Timber.DebugTree() {
                 override fun createStackElementTag(element: StackTraceElement): String {
-                    return super.createStackElementTag(element) + "-" + element.lineNumber
+                    return "${super.createStackElementTag(element)}-${element.lineNumber}"
                 }
             })
         } else {
@@ -25,13 +25,13 @@ class GolfIqApplication : Application() {
                 }
 
                 override fun createStackElementTag(element: StackTraceElement): String {
-                    return super.createStackElementTag(element) + "-" + element.lineNumber
+                    return "${super.createStackElementTag(element)}-${element.lineNumber}"
                 }
             })
         }
 
         Room.databaseBuilder(this, AppDatabase::class.java, "golfiq-database")
-                .allowMainThreadQueries().build()
+                .fallbackToDestructiveMigration().build()
     }
 
     companion object {
