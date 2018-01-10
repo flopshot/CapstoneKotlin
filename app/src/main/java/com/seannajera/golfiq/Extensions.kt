@@ -4,9 +4,9 @@ import android.annotation.SuppressLint
 import android.support.design.internal.BottomNavigationItemView
 import android.support.design.internal.BottomNavigationMenuView
 import android.support.design.widget.BottomNavigationView
-import android.util.Log
 import android.view.LayoutInflater
 import android.widget.TextView
+import timber.log.Timber
 
 @SuppressLint("RestrictedApi")
 fun BottomNavigationView.disableShiftMode() {
@@ -21,14 +21,14 @@ fun BottomNavigationView.disableShiftMode() {
             val item = menuView.getChildAt(i) as BottomNavigationItemView
 
             item.setShiftingMode(false)
-            // set once again checked value, so view will be updated
+            // set once again checked value, so view will be updated TODO
 
             item.setChecked(item.itemData.isChecked)
         }
     } catch (e: NoSuchFieldException) {
-        Log.e("BNVHelper", "Unable to get shift mode field", e)
+        Timber.e("Unable to get shift mode field", e)
     } catch (e: IllegalAccessException) {
-        Log.e("BNVHelper", "Unable to change value of shift mode", e)
+        Timber.e("Unable to change value of shift mode", e)
     }
 }
 

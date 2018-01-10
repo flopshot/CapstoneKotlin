@@ -6,6 +6,27 @@ import com.seannajera.golfiq.model.persistenceDb.entity.Round
 
 @Dao
 interface RoundDao {
+//TODO
+//    @Query("""
+//
+//        """)
+//    fun getRoundInfos(): List<RoundInfo>
+//
+//    @Query("""
+//
+//        """)
+//    fun getRoundInfoById(roundId: Long): RoundInfo
+//
+//    @Query("""
+//
+//        """)
+//    fun getScorecardView(roundId: Long): ScorecardView
+//
+//    @Query("""
+//
+//        """)
+//    fun getHoleView(roundId: Long): HoleView
+
     @Query("select * from Round")
     fun getAll(): List<Round>
 

@@ -15,9 +15,9 @@ import android.arch.persistence.room.PrimaryKey
                 onDelete = ForeignKey.CASCADE)],
         indices = [Index(value = ["roundPlayerId"]), Index(value = ["roundId"])]
 )
-class RoundPlayerCourseHoles(var roundPlayerId: Long, var roundId: Long, var score: Int,
-                             var penalties: Int, var putts: Int, var sandShots: Int,
-                             var sandFlag: Int, var girFlag: Int, var firFlag: Int,
-                             var holeNumber: Int) {
+class RoundPlayerHoles(var roundPlayerId: Long, var roundId: Long, var score: Int,
+                       var penalties: Int, var putts: Int, var sandShots: Int,
+                       var sandFlag: Int, var girFlag: Int, var firFlag: Int,
+                       var holeNumber: Int) {
     @PrimaryKey(autoGenerate = true) var id: Long = 0
 }
