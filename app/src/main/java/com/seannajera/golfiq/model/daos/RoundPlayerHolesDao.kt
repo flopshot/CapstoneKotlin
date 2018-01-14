@@ -1,8 +1,8 @@
-package com.seannajera.golfiq.model.persistenceDb.dao
+package com.seannajera.golfiq.model.daos
 
 import android.arch.persistence.room.*
 import android.arch.persistence.room.OnConflictStrategy.REPLACE
-import com.seannajera.golfiq.model.persistenceDb.entity.RoundPlayerHoles
+import com.seannajera.golfiq.model.entities.RoundPlayerHoles
 
 @Dao
 interface RoundPlayerHolesDao {

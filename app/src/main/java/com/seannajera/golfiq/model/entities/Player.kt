@@ -1,4 +1,4 @@
-package com.seannajera.golfiq.model.persistenceDb.entity
+package com.seannajera.golfiq.model.entities
 
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey

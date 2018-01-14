@@ -1,10 +1,9 @@
-package com.seannajera.golfiq.model.persistenceDb
+package com.seannajera.golfiq.model
 
 import android.arch.persistence.room.TypeConverter
 import java.util.*
 
-
-class DateConverters {
+class DateConverter {
     @TypeConverter
     fun toDate(date: Long): Date = Date(date)
 

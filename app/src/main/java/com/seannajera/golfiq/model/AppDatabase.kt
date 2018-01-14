@@ -1,14 +1,14 @@
-package com.seannajera.golfiq.model.persistenceDb
+package com.seannajera.golfiq.model
 
 import android.arch.persistence.room.Database
 import android.arch.persistence.room.RoomDatabase
 import android.arch.persistence.room.TypeConverters
-import com.seannajera.golfiq.model.persistenceDb.dao.*
-import com.seannajera.golfiq.model.persistenceDb.entity.*
+import com.seannajera.golfiq.model.daos.*
+import com.seannajera.golfiq.model.entities.*
 
-@TypeConverters(value = [DateConverters::class])
+@TypeConverters(value = [DateConverter::class])
 @Database(entities = [Player::class, Course::class, Round::class, CourseHoles::class,
-RoundPlayers::class, RoundPlayerHoles::class, MarkerLocation::class, UserLocation::class], version = 1, exportSchema = false)
+    RoundPlayers::class, RoundPlayerHoles::class, MarkerLocation::class, UserLocation::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun courseDao(): CourseDao
     abstract fun courseHolesDao(): CourseHolesDao

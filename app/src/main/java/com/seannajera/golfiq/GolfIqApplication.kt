@@ -1,17 +1,28 @@
 package com.seannajera.golfiq
 
 import android.app.Application
-import android.arch.persistence.room.Room
 import android.util.Log
-import com.seannajera.golfiq.model.persistenceDb.AppDatabase
+import com.seannajera.golfiq.injection.components.ApplicationComponent
+import com.seannajera.golfiq.injection.components.DaggerApplicationComponent
+import com.seannajera.golfiq.injection.modules.ContextModule
+import com.seannajera.golfiq.model.AppDatabase
 import timber.log.Timber
 
 class GolfIqApplication : Application() {
 
+    val component: ApplicationComponent by lazy {
+        DaggerApplicationComponent
+                .builder()
+                .contextModule(ContextModule(this))
+                .build()
+    }
+
     override fun onCreate() {
         super.onCreate()
 
+        appDatabase = component.appDatabase()
         appContext = this
+
         if (BuildConfig.DEBUG) {
             Timber.plant(object : Timber.DebugTree() {
                 override fun createStackElementTag(element: StackTraceElement): String {
@@ -29,14 +40,10 @@ class GolfIqApplication : Application() {
                 }
             })
         }
-
-        Room.databaseBuilder(this, AppDatabase::class.java, "golfiq-database")
-                .fallbackToDestructiveMigration().build()
     }
 
     companion object {
-        private lateinit var appContext:GolfIqApplication
-        fun get():GolfIqApplication = appContext
+        lateinit var appContext: GolfIqApplication
+        lateinit var appDatabase: AppDatabase
     }
-
 }

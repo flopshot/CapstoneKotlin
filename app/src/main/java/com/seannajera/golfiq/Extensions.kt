@@ -33,7 +33,7 @@ fun BottomNavigationView.addBadge(tabIndex: Int, count:Int) {
     val menuView = this.getChildAt(0) as BottomNavigationMenuView
     val itemView = menuView.getChildAt(tabIndex) as BottomNavigationItemView
 
-    val badge = LayoutInflater.from(GolfIqApplication.get())
+    val badge = LayoutInflater.from(GolfIqApplication.appContext)
             .inflate(R.layout.notification_badge, menuView, false)
 
     val countText:TextView = badge.findViewById(R.id.badge_text)
