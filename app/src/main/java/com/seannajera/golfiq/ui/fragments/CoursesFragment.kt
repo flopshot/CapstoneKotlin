@@ -5,7 +5,6 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import com.seannajera.golfiq.R
 
 class CoursesFragment : Fragment() {
@@ -27,8 +26,8 @@ class CoursesFragment : Fragment() {
 
     companion object {
 
-        val TAG = "COURSESFRAGMENT3"
-        private val ARG_PARAM1 = "param1"
+        const val TAG = "COURSESFRAGMENT3"
+        private const val ARG_PARAM1 = "param1"
 
         fun newInstance(param1: String): CoursesFragment {
             val fragment = CoursesFragment()

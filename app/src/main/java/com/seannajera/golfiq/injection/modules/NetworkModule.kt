@@ -1,6 +1,6 @@
 package com.seannajera.golfiq.injection.modules
 
-import android.content.Context
+import com.seannajera.golfiq.GolfIqApplication
 import dagger.Module
 import dagger.Provides
 import okhttp3.Cache
@@ -22,7 +22,7 @@ class NetworkModule {
         }
 
     @Provides
-    fun getCacheFile(context: Context): File {
+    fun getCacheFile(context: GolfIqApplication): File {
         return File(context.getCacheDir(), "okhttp-cache")
     }
 
@@ -35,19 +35,6 @@ class NetworkModule {
     fun getOkHttpClient(cache: Cache, loggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
         return OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
-//                .addInterceptor(Cookies.GetCookieInterceptor())
-//                .addInterceptor(Cookies.AddCookieInterceptor())
-//                .addInterceptor(object : Interceptor() {
-//                    @Throws(IOException::class)
-//                    fun intercept(@NonNull chain: Chain): Response {
-//                        val response = chain.proceed(chain.request())
-//                        // current user or session is invalid and the url isn't to retrieve a chat token
-//                        if (response.code() === 403) {
-//                            UserRepository.logOutUser(MtnApplication.get())
-//                        }
-//                        return response
-//                    }
-//                })
                 .cache(cache)
                 .connectTimeout(30, TimeUnit.SECONDS)
                 .readTimeout(30, TimeUnit.SECONDS)

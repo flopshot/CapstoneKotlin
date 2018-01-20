@@ -29,14 +29,14 @@ fun BottomNavigationView.disableShiftMode() {
     }
 }
 
-fun BottomNavigationView.addBadge(tabIndex: Int, count:Int) {
+fun BottomNavigationView.addBadge(tabIndex: Int, count:Int, appContext: GolfIqApplication) {
     val menuView = this.getChildAt(0) as BottomNavigationMenuView
     val itemView = menuView.getChildAt(tabIndex) as BottomNavigationItemView
 
-    val badge = LayoutInflater.from(GolfIqApplication.appContext)
+    val badge = LayoutInflater.from(appContext)
             .inflate(R.layout.notification_badge, menuView, false)
 
-    val countText:TextView = badge.findViewById(R.id.badge_text)
+    val countText: TextView = badge.findViewById(R.id.badge_text)
     countText.text = if (count < 9) count.toString() else "+9"
     itemView.addView(badge)
 }

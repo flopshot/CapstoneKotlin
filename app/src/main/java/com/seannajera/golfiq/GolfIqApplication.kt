@@ -1,27 +1,25 @@
 package com.seannajera.golfiq
 
+import android.app.Activity
 import android.app.Application
 import android.util.Log
-import com.seannajera.golfiq.injection.components.ApplicationComponent
-import com.seannajera.golfiq.injection.components.DaggerApplicationComponent
-import com.seannajera.golfiq.injection.modules.ContextModule
-import com.seannajera.golfiq.model.AppDatabase
+import com.seannajera.golfiq.injection.modules.ComponentInjector
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasActivityInjector
 import timber.log.Timber
+import javax.inject.Inject
 
-class GolfIqApplication : Application() {
 
-    val component: ApplicationComponent by lazy {
-        DaggerApplicationComponent
-                .builder()
-                .contextModule(ContextModule(this))
-                .build()
-    }
+class GolfIqApplication : Application(), HasActivityInjector {
+
+    @Inject
+    lateinit var dispatchingAndroidInjector : DispatchingAndroidInjector<Activity>
 
     override fun onCreate() {
         super.onCreate()
 
-        appDatabase = component.appDatabase()
-        appContext = this
+        ComponentInjector.init(this)
 
         if (BuildConfig.DEBUG) {
             Timber.plant(object : Timber.DebugTree() {
@@ -42,8 +40,7 @@ class GolfIqApplication : Application() {
         }
     }
 
-    companion object {
-        lateinit var appContext: GolfIqApplication
-        lateinit var appDatabase: AppDatabase
+    override fun activityInjector(): AndroidInjector<Activity> {
+        return dispatchingAndroidInjector
     }
 }

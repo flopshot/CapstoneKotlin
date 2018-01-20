@@ -27,8 +27,8 @@ class OldRoundFragment : Fragment() {
 
     companion object {
 
-        val TAG = "OLROUNDFRAGMENT1"
-        private val ARG_PARAM1 = "param1"
+        const val TAG = "OLROUNDFRAGMENT1"
+        private const val ARG_PARAM1 = "param1"
 
         fun newInstance(param1: String): OldRoundFragment {
             val fragment = OldRoundFragment()

@@ -1,11 +1,24 @@
 package com.seannajera.golfiq.injection.components
 
-import com.seannajera.golfiq.injection.modules.AppDatabaseModule
-import com.seannajera.golfiq.injection.modules.ContextModule
-import com.seannajera.golfiq.model.AppDatabase
+import com.seannajera.golfiq.GolfIqApplication
+import com.seannajera.golfiq.injection.modules.*
+import dagger.BindsInstance
 import dagger.Component
+import javax.inject.Singleton
 
-@Component(modules = [AppDatabaseModule::class, ContextModule::class])
+
+@Singleton
+@Component(modules = [AppDatabaseModule::class, ViewModelModule::class,
+    ElevationServiceModule::class, WeatherServiceModule::class, ActivityBuilderModule::class])
 interface ApplicationComponent {
-    fun appDatabase():AppDatabase
+
+    @Component.Builder
+    interface Builder {
+        @BindsInstance
+        fun application(application: GolfIqApplication): Builder
+
+        fun build(): ApplicationComponent
+    }
+
+    fun injectApplicationComponent(application: GolfIqApplication)
 }

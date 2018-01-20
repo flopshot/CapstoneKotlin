@@ -9,7 +9,7 @@ import com.seannajera.golfiq.disableShiftMode
 import com.seannajera.golfiq.ui.fragments.*
 import kotlinx.android.synthetic.main.tab_bar.*
 
-class TabBarActivity : BaseActivity(R.layout.activity_tab_bar) {
+class TabBarActivity : BaseHasFragmentInjectorActivity(R.layout.activity_tab_bar) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,7 +18,7 @@ class TabBarActivity : BaseActivity(R.layout.activity_tab_bar) {
         tabBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
 
         if (savedInstanceState == null) navigateToTab(PlayGolfFragment.TAG)
-//        tabBar.addBadge(1,8)         //Todo: Just an Example
+//        tabBar.addBadge(1,8, golfIqApplication)         //Todo: Just an Example
     }
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->

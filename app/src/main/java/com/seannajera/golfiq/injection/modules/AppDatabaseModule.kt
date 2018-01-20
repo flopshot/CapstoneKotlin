@@ -1,19 +1,18 @@
 package com.seannajera.golfiq.injection.modules
 
 import android.arch.persistence.room.Room
-import android.content.Context
+import com.seannajera.golfiq.GolfIqApplication
 import com.seannajera.golfiq.model.AppDatabase
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 @Module
 class AppDatabaseModule {
 
+    @Singleton
     @Provides
-    @Synchronized
-    fun getAppDatabase(context: Context): AppDatabase {
-        return Room.databaseBuilder(context, AppDatabase::class.java, "golfiq-database")
-                .fallbackToDestructiveMigration()
-                .build()
+    fun getAppDatabase(context: GolfIqApplication): AppDatabase {
+        return Room.databaseBuilder(context, AppDatabase::class.java, "golfiq-database").build()
     }
 }

@@ -27,8 +27,8 @@ class RangeFinderFragment : Fragment() {
 
     companion object {
 
-        val TAG = "RANGEFINDERFRAGMENT4"
-        private val ARG_PARAM1 = "param1"
+        const val TAG = "RANGEFINDERFRAGMENT4"
+        private const val ARG_PARAM1 = "param1"
 
         fun newInstance(param1: String): RangeFinderFragment {
             val fragment = RangeFinderFragment()

@@ -27,8 +27,8 @@ class PlayersFragment : Fragment() {
 
     companion object {
 
-        val TAG = "PLAYERSFRAGMENT2"
-        private val ARG_PARAM1 = "param1"
+        const val TAG = "PLAYERSFRAGMENT2"
+        private const val ARG_PARAM1 = "param1"
 
         fun newInstance(param1: String): PlayersFragment {
             val fragment = PlayersFragment()
