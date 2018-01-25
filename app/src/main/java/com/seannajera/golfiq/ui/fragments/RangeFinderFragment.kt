@@ -30,7 +30,7 @@ class RangeFinderFragment : Fragment() {
         const val TAG = "RANGEFINDERFRAGMENT4"
         private const val ARG_PARAM1 = "param1"
 
-        fun newInstance(param1: String): RangeFinderFragment {
+        operator fun invoke(param1: String): RangeFinderFragment {
             val fragment = RangeFinderFragment()
             val args = Bundle()
             args.putString(ARG_PARAM1, param1)

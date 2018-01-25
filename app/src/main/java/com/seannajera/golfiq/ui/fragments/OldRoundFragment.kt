@@ -30,7 +30,7 @@ class OldRoundFragment : Fragment() {
         const val TAG = "OLROUNDFRAGMENT1"
         private const val ARG_PARAM1 = "param1"
 
-        fun newInstance(param1: String): OldRoundFragment {
+        operator fun invoke(param1: String): OldRoundFragment {
             val fragment = OldRoundFragment()
             val args = Bundle()
             args.putString(ARG_PARAM1, param1)

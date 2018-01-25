@@ -63,19 +63,19 @@ class TabBarActivity : BaseHasFragmentInjectorActivity(R.layout.activity_tab_bar
         } else {
             when (fragmentTag) {
                 PlayGolfFragment.TAG -> transactionWithAnimation(
-                        transaction, PlayGolfFragment.newInstance("duh"), topTag, fragmentTag
+                        transaction, PlayGolfFragment("duh"), topTag, fragmentTag
                 )
                 OldRoundFragment.TAG -> transactionWithAnimation(
-                        transaction, OldRoundFragment.newInstance("duh"), topTag, fragmentTag
+                        transaction, OldRoundFragment("duh"), topTag, fragmentTag
                 )
                 PlayersFragment.TAG -> transactionWithAnimation(
-                        transaction, PlayersFragment.newInstance("duh"), topTag, fragmentTag
+                        transaction, PlayersFragment("duh"), topTag, fragmentTag
                 )
                 CoursesFragment.TAG -> transactionWithAnimation(
-                        transaction, CoursesFragment.newInstance("duh"), topTag, fragmentTag
+                        transaction, CoursesFragment("duh"), topTag, fragmentTag
                 )
                 RangeFinderFragment.TAG -> transactionWithAnimation(
-                        transaction, RangeFinderFragment.newInstance("duh"), topTag, fragmentTag
+                        transaction, RangeFinderFragment("duh"), topTag, fragmentTag
                 )
             }
         }

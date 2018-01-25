@@ -30,7 +30,7 @@ class PlayersFragment : Fragment() {
         const val TAG = "PLAYERSFRAGMENT2"
         private const val ARG_PARAM1 = "param1"
 
-        fun newInstance(param1: String): PlayersFragment {
+        operator fun invoke(param1: String): PlayersFragment {
             val fragment = PlayersFragment()
             val args = Bundle()
             args.putString(ARG_PARAM1, param1)

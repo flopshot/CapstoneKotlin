@@ -3,7 +3,6 @@ package com.seannajera.golfiq.ui.adapters
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 
-
 class CoursesAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun getItemCount(): Int {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
