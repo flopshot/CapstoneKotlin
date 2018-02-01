@@ -7,8 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.seannajera.golfiq.R
+import com.seannajera.golfiq.injection.Injectable
 
-class OldRoundFragment : Fragment() {
+class OldRoundFragment : Fragment(), Injectable {
 
     private lateinit var mParam1: String
 

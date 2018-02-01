@@ -3,23 +3,23 @@ package com.seannajera.golfiq
 import android.app.Activity
 import android.app.Application
 import android.util.Log
-import com.seannajera.golfiq.injection.modules.ComponentInjector
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
 import timber.log.Timber
 import javax.inject.Inject
 
-
 class GolfIqApplication : Application(), HasActivityInjector {
 
     @Inject
     lateinit var dispatchingAndroidInjector : DispatchingAndroidInjector<Activity>
 
+    var activityCreatedList: HashSet<String> = HashSet()
+
     override fun onCreate() {
         super.onCreate()
 
-        ComponentInjector.init(this)
+        ActivityLifecycleListener.init(this)
 
         if (BuildConfig.DEBUG) {
             Timber.plant(object : Timber.DebugTree() {

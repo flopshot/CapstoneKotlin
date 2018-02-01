@@ -1,109 +1,121 @@
 package com.seannajera.golfiq.ui.activities
 
+import android.app.ActivityOptions
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentTransaction
+import android.transition.Fade
+import com.seannajera.golfiq.GolfIqApplication
 import com.seannajera.golfiq.R
-import com.seannajera.golfiq.disableShiftMode
 import com.seannajera.golfiq.ui.fragments.*
+import com.seannajera.golfiq.util.disableShiftMode
 import kotlinx.android.synthetic.main.tab_bar.*
+import javax.inject.Inject
 
-class TabBarActivity : BaseHasFragmentInjectorActivity(R.layout.activity_tab_bar) {
+abstract class TabBarActivity : BaseHasFragmentInjectorActivity(R.layout.activity_tab_bar) {
+
+    @Inject
+    lateinit var app: GolfIqApplication
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         tabBar.disableShiftMode()
         tabBar.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+    }
 
-        if (savedInstanceState == null) navigateToTab(PlayGolfFragment.TAG)
-//        tabBar.addBadge(1,8, golfIqApplication)         //Todo: Just an Example
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        overridePendingTransition(0,0)
+        val fade = Fade()
+        fade.excludeTarget(android.R.id.statusBarBackground, true)
+
+        window.enterTransition = fade
+        window.exitTransition = fade
     }
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.action_new_round -> {
-                navigateToTab(PlayGolfFragment.TAG)
+                navigateToTab(NewRoundTabActivity::class.java.name)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.action_old_rounds -> {
-                navigateToTab(OldRoundFragment.TAG)
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.action_players -> {
-                navigateToTab(PlayersFragment.TAG)
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.action_courses -> {
-                navigateToTab(CoursesFragment.TAG)
+                navigateToTab(OldRoundTabActivity::class.java.name)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.action_range_finder -> {
-                navigateToTab(RangeFinderFragment.TAG)
+                navigateToTab(RangeFinderTabActivity::class.java.name)
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.action_players -> {
+                navigateToTab(PlayerTabActivity::class.java.name)
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.action_courses -> {
+                navigateToTab(CourseTabActivity::class.java.name)
                 return@OnNavigationItemSelectedListener true
             }
         }
         false
     }
 
-    private fun navigateToTab(fragmentTag: String) {
+    fun navigateToTab(activityClassName: String) {
+        val intent = Intent().apply {
+            setClassName(this@TabBarActivity, activityClassName)
+            flags = Intent.FLAG_ACTIVITY_REORDER_TO_FRONT
+        }
 
-        val topTag = peekAtFragmentStackTag()
-
-        if (topTag == fragmentTag) return
-
-        val fragmentManager = supportFragmentManager
-        val inStackFragment = fragmentManager.findFragmentByTag(fragmentTag)
-        val transaction = fragmentManager.beginTransaction()
-
-
-        if (inStackFragment != null) {
-            transactionWithAnimation(transaction, inStackFragment, topTag, fragmentTag)
+        if (activityClassName in app.activityCreatedList) {
+            startActivity(intent)
         } else {
-            when (fragmentTag) {
-                PlayGolfFragment.TAG -> transactionWithAnimation(
-                        transaction, PlayGolfFragment("duh"), topTag, fragmentTag
-                )
-                OldRoundFragment.TAG -> transactionWithAnimation(
-                        transaction, OldRoundFragment("duh"), topTag, fragmentTag
-                )
-                PlayersFragment.TAG -> transactionWithAnimation(
-                        transaction, PlayersFragment("duh"), topTag, fragmentTag
-                )
-                CoursesFragment.TAG -> transactionWithAnimation(
-                        transaction, CoursesFragment("duh"), topTag, fragmentTag
-                )
-                RangeFinderFragment.TAG -> transactionWithAnimation(
-                        transaction, RangeFinderFragment("duh"), topTag, fragmentTag
-                )
+            val options = ActivityOptions
+                    .makeSceneTransitionAnimation(this, tabBar, "tabBar")
+            startActivity(intent
+                    ,options.toBundle()
+            )
+        }
+    }
+
+    private fun commitChildFragmentTransaction(fragment: Fragment, fragmentTag: String) {
+        supportFragmentManager
+                .beginTransaction()
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .replace(fragmentContainerId(), fragment, fragmentTag)
+                .addToBackStack(fragmentTag)
+                .commit()
+    }
+
+    fun navigateToFragment(fragmentTag: String, @Suppress("UNUSED_PARAMETER") vararg args: Any) {
+        when (fragmentTag) {
+            CoursesFragment.TAG -> commitChildFragmentTransaction(CoursesFragment(), fragmentTag)
+            OldRoundFragment.TAG -> commitChildFragmentTransaction(OldRoundFragment(), fragmentTag)
+            PlayGolfFragment.TAG -> commitChildFragmentTransaction(PlayGolfFragment(), fragmentTag)
+            PlayersFragment.TAG -> commitChildFragmentTransaction(PlayersFragment(), fragmentTag)
+            RangeFinderFragment.TAG -> commitChildFragmentTransaction(RangeFinderFragment(), fragmentTag)
+            else -> {}
+        }
+    }
+
+    abstract fun fragmentContainerId(): Int
+
+    override fun onBackPressed() {
+        if (supportFragmentManager.backStackEntryCount > 1) {
+            supportFragmentManager.popBackStack()
+        } else {
+            if (this !is NewRoundTabActivity) {
+                navigateToTab(NewRoundTabActivity::class.java.name)
+            } else {
+                val a = Intent(Intent.ACTION_MAIN).apply {
+                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS)
+                    addCategory(Intent.CATEGORY_HOME)
+                }
+                startActivity(a)
             }
         }
-    }
-
-    private fun peekAtFragmentStackTag(): String {
-        val index = supportFragmentManager.backStackEntryCount - 1
-
-        return when (index) {
-            !in 0.downTo(-1) -> supportFragmentManager.getBackStackEntryAt(index).name
-            else -> "0"
-        }
-    }
-
-    private fun transactionWithAnimation(transaction: FragmentTransaction, fragment: Fragment,
-                                         fromTabTag: String, toTabTag: String) {
-
-        val fromTabIndex = fromTabTag[fromTabTag.length - 1].toInt()
-        val toTabIndex = toTabTag[toTabTag.length - 1].toInt()
-
-        if (toTabIndex < fromTabIndex) {
-            transaction.setCustomAnimations(R.anim.slide_in_left, R.anim.slide_out_right)
-        } else {
-            transaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left)
-        }
-
-        transaction.replace(R.id.fragment_container, fragment)
-                .addToBackStack(toTabTag)
-                .commit()
     }
 }

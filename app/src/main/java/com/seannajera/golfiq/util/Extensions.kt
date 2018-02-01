@@ -1,4 +1,4 @@
-package com.seannajera.golfiq
+package com.seannajera.golfiq.util
 
 import android.annotation.SuppressLint
 import android.support.design.internal.BottomNavigationItemView
@@ -6,6 +6,8 @@ import android.support.design.internal.BottomNavigationMenuView
 import android.support.design.widget.BottomNavigationView
 import android.view.LayoutInflater
 import android.widget.TextView
+import com.seannajera.golfiq.GolfIqApplication
+import com.seannajera.golfiq.R
 import timber.log.Timber
 
 @SuppressLint("RestrictedApi")

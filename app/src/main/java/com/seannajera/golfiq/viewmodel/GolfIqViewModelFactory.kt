@@ -6,7 +6,6 @@ import javax.inject.Inject
 import javax.inject.Provider
 import javax.inject.Singleton
 
-@Suppress("UNCHECKED_CAST")
 @Singleton
 class GolfIqViewModelFactory @Inject
 constructor(private val creators: Map<Class<out ViewModel>, Provider<ViewModel>>) : ViewModelProvider.Factory {
@@ -25,6 +24,7 @@ constructor(private val creators: Map<Class<out ViewModel>, Provider<ViewModel>>
             throw IllegalArgumentException("unknown model class " + modelClass)
         }
         try {
+            @Suppress("UNCHECKED_CAST")
             return creator.get() as T
         } catch (e: Exception) {
             throw RuntimeException(e)

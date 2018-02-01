@@ -8,7 +8,7 @@ import javax.inject.Singleton
 
 
 @Singleton
-@Component(modules = [AppDatabaseModule::class, ViewModelModule::class,
+@Component(modules = [AppDatabaseModule::class, ViewModelModule::class, SharedPreferencesModule::class,
     ElevationServiceModule::class, WeatherServiceModule::class, ActivityBuilderModule::class])
 interface ApplicationComponent {
 

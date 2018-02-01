@@ -7,13 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.seannajera.golfiq.R
+import com.seannajera.golfiq.injection.Injectable
+import com.seannajera.golfiq.ui.activities.TabBarActivity
+import kotlinx.android.synthetic.main.fragment_range_finder.*
 
-class RangeFinderFragment : Fragment() {
+class RangeFinderFragment : Fragment(), Injectable {
 
     private lateinit var mParam1: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        retainInstance = true
         if (arguments != null) {
             mParam1 = arguments?.getString(ARG_PARAM1) ?: ""
         }
@@ -23,6 +27,12 @@ class RangeFinderFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
 
         return inflater.inflate(R.layout.fragment_range_finder, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        newFragButton.setOnClickListener({ _ -> (activity as TabBarActivity).navigateToFragment(CoursesFragment.TAG)})
     }
 
     companion object {

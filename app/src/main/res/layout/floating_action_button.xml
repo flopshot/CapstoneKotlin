@@ -8,6 +8,5 @@
     android:clickable="true"
     android:focusable="true"
     android:layout_margin="16dp"
-    app:layout_anchor="@id/fragment_container"
     app:layout_anchorGravity="bottom|right|end"
     tools:src="@drawable/ic_add_player" />

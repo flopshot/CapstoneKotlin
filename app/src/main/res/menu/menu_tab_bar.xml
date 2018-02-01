@@ -3,25 +3,21 @@
     <item
         android:id="@+id/action_new_round"
         android:icon="@drawable/ic_new_round"
-        android:title="@string/newRound"
         />
     <item
         android:id="@+id/action_old_rounds"
         android:icon="@drawable/ic_menu_edit"
-        android:title="@string/oldRound"
-        />
-    <item
-        android:id="@+id/action_players"
-        android:icon="@drawable/ic_players"
-        android:title="@string/playerTitle"/>
-    <item
-        android:id="@+id/action_courses"
-        android:icon="@drawable/ic_golf_course"
-        android:title="@string/coursesTitle"
         />
     <item
         android:id="@+id/action_range_finder"
         android:icon="@drawable/ic_range_finder"
-        android:title="@string/range_finder"
+        />
+    <item
+        android:id="@+id/action_players"
+        android:icon="@drawable/ic_players"
+        />
+    <item
+        android:id="@+id/action_courses"
+        android:icon="@drawable/ic_golf_course"
         />
 </menu>

@@ -5,12 +5,6 @@
     android:layout_height="match_parent"
     tools:context="com.seannajera.golfiq.ui.fragments.CoursesFragment">
 
-    <FrameLayout
-        android:id="@+id/fragment_container"
-        android:layout_marginTop="?attr/actionBarSize"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,7 +14,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/floating_action_button"/>
+    <!--<include layout="@layout/floating_action_button"/>-->
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"
