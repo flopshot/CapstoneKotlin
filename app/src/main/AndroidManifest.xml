@@ -10,17 +10,16 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activities.TabBarActivity"/>
-        <activity android:name=".ui.activities.NewRoundTabActivity" >
+        <activity android:name=".presentation.activities.NewRoundTabActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activities.OldRoundTabActivity" />
-        <activity android:name=".ui.activities.RangeFinderTabActivity" />
-        <activity android:name=".ui.activities.PlayerTabActivity" />
-        <activity android:name=".ui.activities.CourseTabActivity" />
+        <activity android:name=".presentation.activities.OldRoundTabActivity" />
+        <activity android:name=".presentation.activities.RangeFinderTabActivity" />
+        <activity android:name=".presentation.activities.PlayerTabActivity" />
+        <activity android:name=".presentation.activities.CourseTabActivity" />
     </application>
 
 </manifest>

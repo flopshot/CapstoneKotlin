@@ -4,4 +4,4 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/range_finder_container"
-    tools:context="com.seannajera.golfiq.ui.activities.RangeFinderTabActivity"/>
+    tools:context="com.seannajera.golfiq.presentation.activities.RangeFinderTabActivity"/>

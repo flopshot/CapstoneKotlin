@@ -1,6 +1,6 @@
 package com.seannajera.golfiq.injection.modules
 
-import com.seannajera.golfiq.ui.activities.*
+import com.seannajera.golfiq.presentation.activities.*
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

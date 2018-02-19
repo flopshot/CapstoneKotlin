@@ -2,7 +2,7 @@ package com.seannajera.golfiq.injection.modules
 
 import android.arch.persistence.room.Room
 import com.seannajera.golfiq.GolfIqApplication
-import com.seannajera.golfiq.model.AppDatabase
+import com.seannajera.golfiq.data.AppDatabase
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

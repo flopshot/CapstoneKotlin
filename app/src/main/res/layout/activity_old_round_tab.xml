@@ -5,4 +5,4 @@
     android:id="@+id/old_round_tab_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.seannajera.golfiq.ui.activities.OldRoundTabActivity"/>
+    tools:context="com.seannajera.golfiq.presentation.activities.OldRoundTabActivity"/>
