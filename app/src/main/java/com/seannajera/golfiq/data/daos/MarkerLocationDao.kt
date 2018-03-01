@@ -2,22 +2,22 @@ package com.seannajera.golfiq.data.daos
 
 import android.arch.persistence.room.*
 import android.arch.persistence.room.OnConflictStrategy.REPLACE
-import com.seannajera.golfiq.data.entities.MarkerLocation
+import com.seannajera.golfiq.data.entities.MarkerEntity
 
 @Dao
 interface MarkerLocationDao {
-    @Query("select * from MarkerLocation")
-    fun getAll(): List<MarkerLocation>
+    @Query("select * from MarkerEntity")
+    fun getAll(): List<MarkerEntity>
 
-    @Query("select * from MarkerLocation where id = :id")
-    fun findMarkerLocationById(id: Long): MarkerLocation
+    @Query("select * from MarkerEntity where id = :id")
+    fun findMarkerLocationById(id: Long): MarkerEntity
 
     @Insert(onConflict = REPLACE)
-    fun insertMarkerLocation(markerLocation: MarkerLocation)
+    fun insertMarkerLocation(markerEntity: MarkerEntity)
 
     @Update(onConflict = REPLACE)
-    fun updateMarkerLocation(markerLocation: MarkerLocation)
+    fun updateMarkerLocation(markerEntity: MarkerEntity)
 
     @Delete
-    fun deleteMarkerLocation(markerLocation: MarkerLocation)
+    fun deleteMarkerLocation(markerEntity: MarkerEntity)
 }

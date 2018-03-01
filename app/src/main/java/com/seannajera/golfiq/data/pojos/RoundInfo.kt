@@ -1,4 +1,4 @@
-package com.seannajera.golfiq.data.valueObjects
+package com.seannajera.golfiq.data.pojos
 
 import java.util.*
 

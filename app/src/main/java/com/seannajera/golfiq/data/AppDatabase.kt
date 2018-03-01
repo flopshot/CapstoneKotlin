@@ -7,15 +7,18 @@ import com.seannajera.golfiq.data.daos.*
 import com.seannajera.golfiq.data.entities.*
 
 @TypeConverters(value = [DateConverter::class])
-@Database(entities = [Player::class, Course::class, Round::class, CourseHoles::class,
-    RoundPlayers::class, RoundPlayerHoles::class, MarkerLocation::class, UserLocation::class], version = 1, exportSchema = false)
+@Database(entities = [PlayerEntity::class, CourseEntity::class, RoundEntity::class, ClubEntity::class,
+    HoleEntity::class, ScoreEntity::class, MarkerEntity::class, PlayerLocationEntity::class, TeesEntity::class,
+    RoundPlayerEntity::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun courseDao(): CourseDao
-    abstract fun courseHolesDao(): CourseHolesDao
+    abstract fun clubDaoDao(): ClubDao
     abstract fun markerLocationDao(): MarkerLocationDao
     abstract fun playerDao(): PlayerDao
     abstract fun roundDao(): RoundDao
-    abstract fun roundPlayerHolesDao(): RoundPlayerHolesDao
-    abstract fun roundPlayersDao(): RoundPlayersDao
+    abstract fun scoreDao(): ScoreDao
+    abstract fun holeDao(): HoleDao
     abstract fun userLocationDao(): UserLocationDao
+    abstract fun roundPlayerDao(): RoundPlayerDao
+    abstract fun teesDao(): TeesDao
 }

@@ -5,4 +5,4 @@ import android.arch.persistence.room.PrimaryKey
 import java.util.*
 
 @Entity()
-data class UserLocation(@PrimaryKey var id: Long, var lat: Double, var lon: Double, var errorMargin: Double, var createdAt: Date)
+data class MarkerEntity(@PrimaryKey var id: Long, var lat: Double, var lon: Double, var createdAt: Date)

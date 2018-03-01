@@ -39,23 +39,18 @@ abstract class TabBarActivity : BaseHasFragmentInjectorActivity(R.layout.activit
         when (item.itemId) {
             R.id.action_new_round -> {
                 navigateToTab(NewRoundTabActivity::class.java.name)
-                return@OnNavigationItemSelectedListener true
             }
             R.id.action_old_rounds -> {
                 navigateToTab(OldRoundTabActivity::class.java.name)
-                return@OnNavigationItemSelectedListener true
             }
             R.id.action_range_finder -> {
                 navigateToTab(RangeFinderTabActivity::class.java.name)
-                return@OnNavigationItemSelectedListener true
             }
             R.id.action_players -> {
                 navigateToTab(PlayerTabActivity::class.java.name)
-                return@OnNavigationItemSelectedListener true
             }
             R.id.action_courses -> {
                 navigateToTab(CourseTabActivity::class.java.name)
-                return@OnNavigationItemSelectedListener true
             }
         }
         false

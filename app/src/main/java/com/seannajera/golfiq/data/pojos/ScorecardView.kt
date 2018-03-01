@@ -1,4 +1,4 @@
-package com.seannajera.golfiq.data.valueObjects
+package com.seannajera.golfiq.data.pojos
 
 class ScorecardView(var roundId: Long, var holeNumber: Int, var holePar: Int,
                     var p1Score: Int, var p1Initials: String, var p1Total: Int,

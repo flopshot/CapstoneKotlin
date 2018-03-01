@@ -2,22 +2,27 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/action_new_round"
+        android:title="@string/newRound"
         android:icon="@drawable/ic_new_round"
         />
     <item
         android:id="@+id/action_old_rounds"
+        android:title="@string/oldRound"
         android:icon="@drawable/ic_menu_edit"
         />
     <item
         android:id="@+id/action_range_finder"
+        android:title="@string/range_finder"
         android:icon="@drawable/ic_range_finder"
         />
     <item
         android:id="@+id/action_players"
+        android:title="@string/playerTitle"
         android:icon="@drawable/ic_players"
         />
     <item
         android:id="@+id/action_courses"
+        android:title="@string/coursesTitle"
         android:icon="@drawable/ic_golf_course"
         />
 </menu>

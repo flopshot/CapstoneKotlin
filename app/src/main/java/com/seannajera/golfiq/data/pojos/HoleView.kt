@@ -1,4 +1,4 @@
-package com.seannajera.golfiq.data.valueObjects
+package com.seannajera.golfiq.data.pojos
 
 class HoleView(var roundId: Int, var holeNumber: Int, var holeDistance: Int, var holePar: Int, var holeCount: Int,
                var p1Score: Int, var p1Initials: String, var p1Penalties: Int,

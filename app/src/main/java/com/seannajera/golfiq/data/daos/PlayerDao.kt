@@ -2,22 +2,22 @@ package com.seannajera.golfiq.data.daos
 
 import android.arch.persistence.room.*
 import android.arch.persistence.room.OnConflictStrategy.REPLACE
-import com.seannajera.golfiq.data.entities.Player
+import com.seannajera.golfiq.data.entities.PlayerEntity
 
 @Dao
 interface PlayerDao {
-    @Query("select * from Player")
-    fun getAll(): List<Player>
+    @Query("select * from PlayerEntity")
+    fun getAll(): List<PlayerEntity>
 
-    @Query("select * from Player where id = :id")
-    fun findPlayerById(id: Long): Player
+    @Query("select * from PlayerEntity where id = :id")
+    fun findPlayerById(id: String): PlayerEntity
 
     @Insert(onConflict = REPLACE)
-    fun insertPlayer(player: Player)
+    fun insertPlayer(playerEntity: PlayerEntity)
 
     @Update(onConflict = REPLACE)
-    fun updatePlayer(player: Player)
+    fun updatePlayer(playerEntity: PlayerEntity)
 
     @Delete
-    fun deletePlayer(player: Player)
+    fun deletePlayer(playerEntity: PlayerEntity)
 }
