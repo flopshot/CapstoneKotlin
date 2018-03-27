@@ -6,4 +6,5 @@ data class Tees(var id: Int,
                 var color: String,
                 var yards: Int,
                 var rating: Float,
+                var holeYard: MutableList<Int>,
                 var slope: Int)
