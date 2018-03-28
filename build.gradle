@@ -17,6 +17,20 @@ allprojects {
         jcenter()
         google()
     }
+
+    project.ext {
+        buildToolsVersion = "27.0.1"
+
+        support_version = "27.1.0"
+        dagger_version = '2.13'
+        play_version = '11.8.0'
+
+        rxJavaVersion = "2.1.7"
+        rxAndroidVersion = "1.2.1"
+        streamsVersion = "1.1.7"
+        retrolambdaVersion = "3.2.5"
+        mockitoVersion = "2.8.9"
+    }
 }
 
 task customClean(type: Delete) {
